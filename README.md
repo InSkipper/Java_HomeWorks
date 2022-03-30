@@ -11,7 +11,7 @@
   [Вывод программы](https://github.com/InSkipper/Java_HomeWorks/tree/ThirdHomework#вывод-программы)
 
 ### Внедрение через конструктор
-Внедрение через конструктор происходит в классе [Flashlight](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/Flashlight.java).
+Внедрение через конструктор происходит в классе [Flashlight](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/electronics/Flashlight.java).
 Конструктор генерируется автоматически с помощью аннотации _Ламбока_ **@RequiredArgsConstructor**. 
 
 Здесь происходит внедрение объекта, реализующего интерфейс **Battery**. В данном случае можно не использовать аннотацию **@Qualifier** для уточнения имени внедряемого бина, так как имя поля совпадает с именем бина.
@@ -30,7 +30,7 @@ public class Flashlight {
 ```
 
 ### Внедрение через сеттеры
-Рассмотрим класс [MusicPlayer](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/MusicPlayer.java). В этом классе внедрение происходит через метод **serBattery**. С этим методом используется аннотация **@Autowired**, которая позволяет _Спрингу_ подтянуть необходимые связи. 
+Рассмотрим класс [MusicPlayer](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/electronics/MusicPlayer.java). В этом классе внедрение происходит через метод **serBattery**. С этим методом используется аннотация **@Autowired**, которая позволяет _Спрингу_ подтянуть необходимые связи. 
 
 Использование аннотации **@Qualifier** необходимо, в данном случае.
 
@@ -54,7 +54,7 @@ public class MusicPlayer {
 ```
 
 ### Внедрение через поле
-Обратимся к классу [WallClock](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/WallClock.java). Внедрение происходит через поле **battery**. Также используем аннотации **@Autowired** и **@Qualifier**.
+Обратимся к классу [WallClock](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/electronics/WallClock.java). Внедрение происходит через поле **battery**. Также используем аннотации **@Autowired** и **@Qualifier**.
 ```java
 @Service
 public class WallClock {
@@ -83,7 +83,7 @@ private Battery battery;
 Также вместо **@Qualifier**, можно просто дать полю имя внедряемого бина ```private final Battery alkalineBattery;```.
 
 ### Создание и разрушение бина
-Рассмотрим на примере фрагмета класса [AlkalineBattery](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/AlkalineBattery.java).
+Рассмотрим на примере фрагмета класса [AlkalineBattery](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/batteries/AlkalineBattery.java).
 ```java
 @PostConstruct
     public void postConstruct() {
@@ -96,7 +96,7 @@ private Battery battery;
     }
 ```
 
- Метод помеченный аннотацией **@PostConstruct** вызывается после инициализации бина. А метод с аннотацией **@PreDestroy**, как ни странно, перед "разрушением" бина (освобождением памяти). Но **preDestroy** метод не вызывается, если **Scope** выставлен на **Prototype**, как в случае с [AlkalineBattery](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/AlkalineBattery.java), так как _Spring_ не управляет полным жизненным циклом prototype бина.
+ Метод помеченный аннотацией **@PostConstruct** вызывается после инициализации бина. А метод с аннотацией **@PreDestroy**, как ни странно, перед "разрушением" бина (освобождением памяти). Но **preDestroy** метод не вызывается, если **Scope** выставлен на **Prototype**, как в случае с [AlkalineBattery](https://github.com/InSkipper/Java_HomeWorks/blob/ThirdHomework/src/main/java/com/example/thirdhomework/batteries/AlkalineBattery.java), так как _Spring_ не управляет полным жизненным циклом prototype бина.
  
 ### Вывод программы
 ```
