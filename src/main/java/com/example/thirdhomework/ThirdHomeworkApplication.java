@@ -1,5 +1,8 @@
 package com.example.thirdhomework;
 
+import com.example.thirdhomework.electronics.Flashlight;
+import com.example.thirdhomework.electronics.MusicPlayer;
+import com.example.thirdhomework.electronics.WallClock;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
