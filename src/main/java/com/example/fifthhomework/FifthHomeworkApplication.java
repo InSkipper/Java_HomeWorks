@@ -15,7 +15,7 @@ public class FifthHomeworkApplication {
     public static void main(String[] args) {
         SpringApplication.run(FifthHomeworkApplication.class, args);
 
-        publisher.publishEvent();
+        publisher.publishEvent("Event message!");
     }
 
 }
