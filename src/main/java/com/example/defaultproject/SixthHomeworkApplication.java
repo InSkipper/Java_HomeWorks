@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DefaultProjectApplication {
+public class SixthHomeworkApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DefaultProjectApplication.class, args);
+        SpringApplication.run(SixthHomeworkApplication.class, args);
     }
 
 }
