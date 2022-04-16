@@ -1,6 +1,7 @@
 package com.example.fifthhomework.listeners;
 
 import com.example.fifthhomework.events.MyEvent;
+import com.example.fifthhomework.events.MyRollbackEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
@@ -16,7 +17,7 @@ public class TransactEventListener {
     }
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_ROLLBACK)
-    public void listenAnotherEvent(MyEvent event) {
+    public void listenAnotherEvent(MyRollbackEvent event) {
         System.out.println("Second Transactional event listener: " + event.getMessage()
                 + " In thread: " + Thread.currentThread().getName());
     }

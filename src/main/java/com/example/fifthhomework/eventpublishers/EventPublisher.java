@@ -1,6 +1,7 @@
 package com.example.fifthhomework.eventpublishers;
 
 import com.example.fifthhomework.events.MyEvent;
+import com.example.fifthhomework.events.MyRollbackEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,13 @@ public class EventPublisher {
     }
 
     @Transactional
-    public void publishEvent(String message) {
-        publisher.publishEvent(new MyEvent(message));
+    public void publishEvent(MyEvent event) {
+        publisher.publishEvent(event);
+    }
+
+    @Transactional
+    public void publishEvent(MyRollbackEvent event) {
+        publisher.publishEvent(event);
+        throw new RuntimeException();
     }
 }

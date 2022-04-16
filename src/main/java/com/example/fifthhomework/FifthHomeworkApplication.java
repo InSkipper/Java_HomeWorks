@@ -1,6 +1,8 @@
 package com.example.fifthhomework;
 
 import com.example.fifthhomework.eventpublishers.EventPublisher;
+import com.example.fifthhomework.events.MyEvent;
+import com.example.fifthhomework.events.MyRollbackEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,7 +17,12 @@ public class FifthHomeworkApplication {
     public static void main(String[] args) {
         SpringApplication.run(FifthHomeworkApplication.class, args);
 
-        publisher.publishEvent("Event message!");
+        publisher.publishEvent(new MyEvent("Event message!"));
+        try {
+            publisher.publishEvent(new MyRollbackEvent("Rollback event message!"));
+        } catch (RuntimeException ignored) {
+
+        }
     }
 
 }
