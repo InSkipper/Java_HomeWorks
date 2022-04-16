@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 @Conditional(NotWithDefaultCondition.class)
 public class ThirdBean {
     public ThirdBean() {
-        System.out.println("Third Bean, env variable have not default value!");
+        System.out.println("Third Bean: 'Env variable set to non-default value!'");
     }
 }

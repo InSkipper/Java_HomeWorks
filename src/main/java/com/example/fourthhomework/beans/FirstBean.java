@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 @Profile({"test"})
 public class FirstBean {
     public FirstBean() {
-        System.out.println("First bean, profile set to test!");
+        System.out.println("First bean: 'Profile set to test!'");
     }
 }

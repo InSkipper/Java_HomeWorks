@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 @ConditionalOnBean(FirstBean.class)
 public class SecondBean {
     public SecondBean() {
-        System.out.println("Second bean, first bean exists!");
+        System.out.println("Second bean: 'First bean exists!'");
     }
 }
