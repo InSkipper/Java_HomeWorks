@@ -49,7 +49,7 @@ public class FirstController {
 ### JSON на вход
 
 _Spring_ умеет автоматически парсить _JSON_ файл в _POJO_ класс с помощью _Jackson_. Для этого перед аргументом метода
-контроллера нужно написать аннотацию **@RequestBody** и
+[контроллера](https://github.com/InSkipper/Java_HomeWorks/blob/SixthHomework/src/main/java/com/example/defaultproject/controllers/SecondController.java) нужно написать аннотацию **@RequestBody** и
 свой [POJO класс](https://github.com/InSkipper/Java_HomeWorks/blob/SixthHomework/src/main/java/com/example/defaultproject/dto/MyDTO.java)
 .
 
