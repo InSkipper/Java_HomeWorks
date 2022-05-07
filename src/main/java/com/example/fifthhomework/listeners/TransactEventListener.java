@@ -8,8 +8,6 @@ import org.springframework.transaction.event.TransactionalEventListener;
 
 @Service
 public class TransactEventListener {
-
-    //ПРОБЛЕМА: Работает точно так же, как и EventListener
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void listenEvent(MyEvent event) {
         System.out.println("First Transactional event listener: " + event.getMessage()
