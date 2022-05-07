@@ -44,7 +44,7 @@ public class FirstController {
 }
 ```
 
-![Headers](C:\Users\Dan\Desktop\руфвукы.png "Headers")
+![Headers](https://user-images.githubusercontent.com/76143861/167248007-171b848e-4857-4952-aafa-55b521cbea21.png)
 
 ### JSON на вход
 
@@ -64,7 +64,7 @@ public class SecondController {
 }
 ```
 
-![json](C:\Users\Dan\Desktop\json.png)
+![json](https://user-images.githubusercontent.com/76143861/167248031-3879b6ab-6e7b-4802-9449-0fbff63f8a07.png)
 
 ### Обработчик ошибок
 
@@ -103,4 +103,4 @@ public class ThirdController {
     }
 }
 ```
-![exeption](C:\Users\Dan\Desktop\exeption.png)
+![exeption](https://user-images.githubusercontent.com/76143861/167248042-568afffe-4c08-43e5-abd6-28dbefcf8a9b.png)
