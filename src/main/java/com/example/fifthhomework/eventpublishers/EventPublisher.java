@@ -24,6 +24,5 @@ public class EventPublisher {
     public void publishEvent(MyRollbackEvent event) {
         System.out.println("___Publishing MyRollbackEvent___");
         publisher.publishEvent(event);
-        throw new RuntimeException();
     }
 }

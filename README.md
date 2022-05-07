@@ -106,6 +106,5 @@ ___Publishing MyEvent___
 Common event listener: Event message! In thread: main
 First Transactional event listener: Event message! In thread: main
 ___Publishing MyRollbackEvent___
-Second Transactional event listener: Rollback event message! In thread: main
 Async event listener: Event message! In thread: threadPoolTaskExecutor-1
 ```
