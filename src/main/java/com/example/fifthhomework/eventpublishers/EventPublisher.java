@@ -16,11 +16,13 @@ public class EventPublisher {
 
     @Transactional
     public void publishEvent(MyEvent event) {
+        System.out.println("___Publishing MyEvent___");
         publisher.publishEvent(event);
     }
 
     @Transactional
     public void publishEvent(MyRollbackEvent event) {
+        System.out.println("___Publishing MyRollbackEvent___");
         publisher.publishEvent(event);
         throw new RuntimeException();
     }
