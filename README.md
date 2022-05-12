@@ -1,4 +1,4 @@
-# Seventh Homework
+# Eighth Homework
 
 ## Задание
 
@@ -165,12 +165,14 @@ public interface MyRepository extends CrudRepository<ToDoList, Long> {
 
 ### Добавление списка дел в БД
 
-![](C:\Users\Dan\Desktop\todolist_POST.png)
+![todolist_POST](https://user-images.githubusercontent.com/76143861/168149692-64d82291-7180-4605-965a-9ba19fb0a27f.png)
+
 
 ### Получение всех списков дел из БД
 
-![](C:\Users\Dan\Desktop\todolist_GET.png)
+![todolist_GET](https://user-images.githubusercontent.com/76143861/168149744-47fb976e-557a-4df5-8d64-a14677d1bd1f.png)
+
 
 ### Непрошедший валидацию запрос
 
-![](C:\Users\Dan\Desktop\todolist_POST_INVALID.png)
+![todolist_POST_INVALID](https://user-images.githubusercontent.com/76143861/168149772-003514f5-eeb0-4536-b098-e67771562aa6.png)
