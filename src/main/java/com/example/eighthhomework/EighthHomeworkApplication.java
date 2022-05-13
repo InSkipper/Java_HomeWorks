@@ -1,13 +1,13 @@
-package com.example.seventhhomework;
+package com.example.eighthhomework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SeventhHomeworkApplication {
+public class EighthHomeworkApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SeventhHomeworkApplication.class, args);
+        SpringApplication.run(EighthHomeworkApplication.class, args);
     }
 
 }

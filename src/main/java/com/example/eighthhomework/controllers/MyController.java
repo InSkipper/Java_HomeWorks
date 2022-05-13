@@ -1,7 +1,7 @@
-package com.example.seventhhomework.controllers;
+package com.example.eighthhomework.controllers;
 
-import com.example.seventhhomework.dto.ToDoList;
-import com.example.seventhhomework.repositories.MyRepository;
+import com.example.eighthhomework.dto.ToDoList;
+import com.example.eighthhomework.repositories.MyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

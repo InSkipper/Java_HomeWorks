@@ -1,6 +1,6 @@
-package com.example.seventhhomework.repositories;
+package com.example.eighthhomework.repositories;
 
-import com.example.seventhhomework.dto.ToDoList;
+import com.example.eighthhomework.dto.ToDoList;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
