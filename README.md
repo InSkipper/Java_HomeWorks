@@ -175,4 +175,4 @@ public interface MyRepository extends CrudRepository<ToDoList, Long> {
 
 ### Непрошедший валидацию запрос
 
-![todolist_POST_INVALID](https://user-images.githubusercontent.com/76143861/168149772-003514f5-eeb0-4536-b098-e67771562aa6.png)
+![todolist_POST_INVALID_v2](https://user-images.githubusercontent.com/76143861/168411565-89692cdb-2806-4970-965a-b9eabc57e03b.png)
