@@ -15,7 +15,7 @@ Basic аутентификация.
 
 ### Конфиг
 
-Настроим конфиг _Spring Security_. Для этого создадим класс, наследуемый от **WebSecurityConfigurerAdapter**
+Настроим конфиг _Spring Security_. Для этого создадим [класс](https://github.com/InSkipper/Java_HomeWorks/blob/TenthHomework/src/main/java/com/example/defaultproject/config/SecurityConfig.java), наследуемый от **WebSecurityConfigurerAdapter**
 и имеющий аннотации **@EnableWebSecurity** и **@Configuration**.
 
 ```java
@@ -27,12 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-В этом классе переопределим метод **configure(HttpSecurity http)**. Укажем, что для запросов начинающихся с **/admin**
+В этом [классе](https://github.com/InSkipper/Java_HomeWorks/blob/TenthHomework/src/main/java/com/example/defaultproject/config/SecurityConfig.java) переопределим метод **configure(HttpSecurity http)**. Укажем, что для запросов начинающихся с **/admin**
 доступ разрешен только для пользователей с ролью **ADMIN**. Аналогично для **/support**. Для всех остальных запросов
 ограничений нет. **formLogin()** создает форму для ввода логина и пароля по запросу **/login**. А **httpBasic()**
 настраивает базовую аунтификация HTTP.
 
-```
+```java
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
@@ -48,7 +48,7 @@ protected void configure(HttpSecurity http) throws Exception {
 
 Определим **BCryptPasswordEncoder** как бин в нашей конфигкрации. Теперь мы сожем использовать для хеширования паролей.
 
-```
+```java
 @Bean
 public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
@@ -59,7 +59,7 @@ public PasswordEncoder passwordEncoder() {
 энкодером. И сохраняем пользоватей в память с помощью **InMemoryUserDetailsManager()**. В продакшене так не делается, но
 для пробы пера сойдет.
 
-```
+```java
 @Bean
 public UserDetailsService userDetailsService() {
     var admin = User.builder()
