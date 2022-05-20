@@ -4,6 +4,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.stream.Collectors;
+
 @RestController
 public class MyController {
     @GetMapping("/public/api")
@@ -22,6 +24,10 @@ public class MyController {
     }
 
     private String getNameAndRoles(Authentication auth) {
-        return String.format("Пользователь '%s' имеет роли: %s", auth.getName(), auth.getAuthorities());
+        var name = auth.getName();
+        var roles = auth.getAuthorities().stream()
+                .map(role -> role.getAuthority().split("_")[1])
+                .collect(Collectors.toList());
+        return String.format("Пользователь '%s' имеет роли: %s", name, roles);
     }
 }

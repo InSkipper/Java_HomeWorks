@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         var admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN")
+                .roles("ADMIN", "SUPPORT")
                 .build();
 
         var user = User.builder()
