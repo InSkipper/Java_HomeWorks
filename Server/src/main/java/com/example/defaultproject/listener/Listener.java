@@ -1,4 +1,4 @@
-package com.example.defaultproject;
+package com.example.defaultproject.listener;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
