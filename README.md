@@ -8,8 +8,9 @@
 
 ### Аннотация
 
-Сначала создадим свою [аннотацию](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/annotation/WithApiMaxCount.java). С её помощью мы отметим метод АПИ, для которого установим ограничение в количесве
-вызовов.
+Сначала создадим
+свою [аннотацию](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/annotation/WithApiMaxCount.java)
+. С её помощью мы отметим метод АПИ, для которого установим ограничение в количесве вызовов.
 
 ```java
 
@@ -24,7 +25,11 @@ public @interface WithApiMaxCount {
 
 ### Контроллер
 
-Теперь создадим [контроллер](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/controller/MyController.java) с АПИ методом. И отметим метод нашей [аннотацией](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/annotation/WithApiMaxCount.java).
+Теперь
+создадим [контроллер](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/controller/MyController.java)
+с АПИ методом. И отметим метод
+нашей [аннотацией](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/annotation/WithApiMaxCount.java)
+.
 
 ```java
 
@@ -47,7 +52,8 @@ public class MyController {
 - **Advice** — набор инструкций выполняемых на точках среза.
 - **Aspect** же — это модуль в котором собраны описания Pointcut и Advice.
 
-[Создадим](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/aspect/WithApiMaxCountAspect.java) срез точек присоединения. В нашем случае это просто пустой метод, помеченный аннотацией
+[Создадим](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/aspect/WithApiMaxCountAspect.java)
+срез точек присоединения. В нашем случае это просто пустой метод, помеченный аннотацией
 **@Pointcut**. В аргументе мы должны указать место среза, в нашем случае это аннотация **WithApiMaxCount**. Кстати,
 местом среза могут быть одна или несколько точек. Их можно объеденять с помощью **&&, ||, !**.
 
@@ -56,36 +62,39 @@ public class MyController {
 public void withApiMaxCountMethods(){}
 ```
 
-Далее [создадим](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/aspect/WithApiMaxCountAspect.java) другой метод, который будет помечен advice аннотацией **@After**. Эта аннотация ссылается на метод,
-который мы создали ранее. Это значит что **checkMaxCount()** выполнится сразу после вызова метода, подходящего под
-условия среза.
+Далее [создадим](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/aspect/WithApiMaxCountAspect.java)
+другой метод, который будет помечен advice аннотацией **@After**. Эта аннотация ссылается на метод, который мы создали
+ранее. Это значит что **checkMaxCount()** выполнится сразу после вызова метода, подходящего под условия среза.
 
 В аргументе **checkMaxCount()** находится **Join point** - непосредственно метод, выполнение которого мы прервали.
-Остается лишь реализовать бизнес логику проверки количества вызовов метода.
+Остается лишь реализовать бизнес логику проверки количества вызовов метода.     
+Воспользуемся аннотацией **@Before** для проверки количества запросов к апи до вызова метода апи.
 
 ```java
-@After("withApiMaxCountMethods()")
-public void checkMaxCount(JoinPoint point) {
-    var methodName = String.format("%s.%s",
-            point.getStaticPart().getSignature().getDeclaringType().getName(),
-            point.getSignature().getName());
-    if (maxCount > currentCount) {
+@Before("withApiMaxCountMethods()")
+public void checkMaxCount(JoinPoint point){
+        var methodName=String.format("%s.%s",
+        point.getStaticPart().getSignature().getDeclaringType().getName(),
+        point.getSignature().getName());
+        if(maxCount>currentCount){
         currentCount++;
-        log.info("Method {} was called {} times out of {}", methodName, currentCount, maxCount);
-    } else {
-        log.warn("Method {} has reached the max number of calls : {}", methodName, maxCount);
+        log.info("Method {} was called {} times out of {}",methodName,currentCount,maxCount);
+        }else{
+        log.warn("Method {} has reached the max number of calls : {}",methodName,maxCount);
         throw new RuntimeException("MAX number of calls");
-    }
-}
+        }
+        }
 ```
 
-Максимально допустимое количество вызовов мы получаем из [конфига](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/resources/application.properties).
+Максимально допустимое количество вызовов мы получаем
+из [конфига](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/resources/application.properties).
 
 ```properties
 api.max-count=2
 ```
 
-Используем это значение на поле с помощью аннотации @Value, в которую передаем имя переменной из конфига. [Класс аспекта](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/aspect/WithApiMaxCountAspect.java)
+Используем это значение на поле с помощью аннотации @Value, в которую передаем имя переменной из
+конфига. [Класс аспекта](https://github.com/InSkipper/Java_HomeWorks/blob/NinethHomework/src/main/java/com/example/defaultproject/aspect/WithApiMaxCountAspect.java)
 обозначается аннотацией **@Aspect**. Также накинем на этот класс аннотация ламбока **@Slf4j**, чтобы иметь возможность
 оспользовать логгер.
 

@@ -2,8 +2,8 @@ package com.example.defaultproject.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,7 @@ public class WithApiMaxCountAspect {
     public void withApiMaxCountMethods() {
     }
 
-    @After("withApiMaxCountMethods()")
+    @Before("withApiMaxCountMethods()")
     public void checkMaxCount(JoinPoint point) {
         var methodName = String.format("%s.%s",
                 point.getStaticPart().getSignature().getDeclaringType().getName(),
